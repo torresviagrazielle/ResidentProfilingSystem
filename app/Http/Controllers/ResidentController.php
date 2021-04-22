@@ -42,6 +42,23 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'lastname' => 'required',
+            'firstname' => 'required',
+            'street' => 'required',
+            'barangay' => 'required',
+            'city' => 'required',
+            'citizenship' => 'required',
+            'religion' => 'required',
+            'sex' => 'required',
+            'birth_date' => 'required',
+            'birth_place' => 'required',
+            'age' => 'required',
+            'civil_status' => 'required',
+            'residence_period' => 'required',
+            'contact_num' => 'required'
+        ]);
+
         //
         $resident = new Resident();
         $resident->lastname = $request->lastname;
@@ -55,13 +72,21 @@ class ResidentController extends Controller
         $resident->citizenship = $request->citizenship;
         $resident->religion = $request->religion;
         $resident->sex = $request->sex;
-        $resident->birthdate = $request->birthdate;
+        $resident->birth_date = $request->birth_date;
         $resident->birth_place = $request->birth_place;
         $resident->age = $request->age;
         $resident->civil_status = $request->civil_status;
         $resident->occupation = $request->occupation;
-        $resident->created_at = $request->created_at;
+        $resident->tin_num = $request->tin_num;
+        $resident->residence_period = $request->residence_period;
+        $resident->contact_num = $request->contact_num;
+        $resident->voters_id = $request->voters_id;
+        $resident->precint_num = $request->precint_num;
         $resident->save();
+
+        if ($resident->save()){
+            return redirect('/residents')->with('status','Sucessfully save');
+        }
 
         return redirect('/residents');
     }
@@ -101,6 +126,23 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'lastname' => 'required',
+            'firstname' => 'required',
+            'street' => 'required',
+            'barangay' => 'required',
+            'city' => 'required',
+            'citizenship' => 'required',
+            'religion' => 'required',
+            'sex' => 'required',
+            'birth_date' => 'required',
+            'birth_place' => 'required',
+            'age' => 'required',
+            'civil_status' => 'required',
+            'residence_period' => 'required',
+            'contact_num' => 'required'
+        ]);
+
         //
         $resident = \App\Models\Resident::find($id);
         $resident->lastname = $request->lastname;
@@ -114,11 +156,16 @@ class ResidentController extends Controller
         $resident->citizenship = $request->citizenship;
         $resident->religion = $request->religion;
         $resident->sex = $request->sex;
-        $resident->birthdate = $request->birthdate;
+        $resident->birth_date = $request->birth_date;
         $resident->birth_place = $request->birth_place;
         $resident->age = $request->age;
         $resident->civil_status = $request->civil_status;
         $resident->occupation = $request->occupation;
+        $resident->tin_num = $request->tin_num;
+        $resident->residence_period = $request->residence_period;
+        $resident->contact_num = $request->contact_num;
+        $resident->voters_id = $request->voters_id;
+        $resident->precint_num = $request->precint_num;
         $resident->save();
 
         return redirect('/residents');
