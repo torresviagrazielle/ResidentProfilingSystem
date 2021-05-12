@@ -32,12 +32,6 @@
                     Voter's ID No. : {{ $resident->voters_id }} <br>
                     Precint Assignment No. : {{ $resident->precint_num }} <br>
                     Created At : {{ $resident->created_at }} <br>
-                    Resident Image: 
-                        @if ($resident->img)
-                            <img src="{{ URL::asset('/storage/img/'.$resident->img) }}" alt="{{ $resident->img }}" style="width:100px; height:100px;"/>
-                        @else
-                            No image available
-                        @endif
                 </div>
             </div>
         </div>

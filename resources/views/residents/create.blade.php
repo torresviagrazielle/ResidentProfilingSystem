@@ -34,6 +34,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Firstname-->
@@ -49,6 +50,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Middlename-->
@@ -58,6 +60,7 @@
                             <div class="col-md-6">
                                 <input id="middlename" type="text" class="form-control" name="middlename" value="{{ old('middlename') }}" autofocus>        
                             </div>
+
                         </div>
 
                         <!--Extname-->
@@ -67,6 +70,7 @@
                             <div class="col-md-6">
                                 <input id="extname" type="text" class="form-control" name="extname" value="{{ old('extname') }}" autofocus>        
                             </div>
+
                         </div>
 
                          <!--House Number-->
@@ -76,6 +80,7 @@
                             <div class="col-md-6">
                                 <input id="house_num" type="text" class="form-control" name="house_num" value="{{ old('house_num') }}" autofocus>        
                             </div>
+
                         </div>
 
                         <!--Street-->
@@ -91,6 +96,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Barangay-->
@@ -98,7 +104,7 @@
                             <label for="barangay" class="col-md-4 col-form-label text-md-right">{{ __('Barangay') }}</label>
 
                             <div class="col-md-6">
-                                <input id="barangay" type="text" class="form-control form-control @error('barangay') is-invalid @enderror" name="barangay" value="{{ old('barangay') }}" autofocus>        
+                                <input id="barangay" type="text" class="form-control" name="barangay" value="{{ old('barangay') }}" autofocus>        
                             </div>
 
                             @error('barangay')
@@ -106,6 +112,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--City-->
@@ -113,7 +120,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" autofocus>        
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" autofocus>        
                             </div>
 
                             @error('city')
@@ -121,6 +128,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Citizenship-->
@@ -136,6 +144,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Religion-->
@@ -151,6 +160,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Sex-->
@@ -166,6 +176,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Date of Birth-->
@@ -181,6 +192,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                          <!--Birth Place-->
@@ -196,6 +208,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Age-->
@@ -211,6 +224,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Civil Status-->
@@ -226,6 +240,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Profession/Occupation-->
@@ -235,6 +250,7 @@
                             <div class="col-md-6">
                                 <input id="occupation" type="text" class="form-control" name="occupation" value="{{ old('occupation') }}" autofocus>        
                             </div>
+
                         </div>
 
                         <!--TIN No.-->
@@ -244,6 +260,7 @@
                             <div class="col-md-6">
                                 <input id="tin_num" type="text" class="form-control" name="tin_num" value="{{ old('tin_num') }}" autofocus>        
                             </div>
+
                         </div>
 
                         <!--Period of Residence-->
@@ -259,6 +276,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Contact Number-->
@@ -274,6 +292,7 @@
                                     {{ $message }}
                                 </span>                                
                             @enderror
+
                         </div>
 
                         <!--Voter's ID No.-->
@@ -283,6 +302,7 @@
                             <div class="col-md-6">
                                 <input id="voters_id" type="text" class="form-control" name="voters_id" value="{{ old('voters_id') }}" autofocus>        
                             </div>
+
                         </div>
 
 
@@ -293,15 +313,7 @@
                             <div class="col-md-6">
                                 <input id="precint_num" type="text" class="form-control" name="precint_num" value="{{ old('precint_num') }}" autofocus>        
                             </div>
-                        </div>
 
-                        <!-- Resident Image-->
-                        <div class="form-group row">
-                            <label for="img" class="col-md-4 col-form-label text-md-right">{{ __('Upload Image') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="file" class="form-control-file" name="img" value="{{ old('img') }}"  autocomplete="img">
-                            </div>
                         </div>
 
                         <div class="form-group row mb-0">

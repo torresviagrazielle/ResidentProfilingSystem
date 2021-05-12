@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resident;
-use App\Models\Transaction;
-use App\Models\Document;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +13,7 @@ class ResidentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -62,21 +59,6 @@ class ResidentController extends Controller
             'contact_num' => 'required'
         ]);
 
-        if($request->hasFile('img')){
-
-            $filenameWithExt = $request->file('img')->getClientOriginalName();
-
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            
-            $extension = $request->file('img')->getClientOriginalExtension();
-
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
-            $path = $request->file('img')->storeAs('public/img', $filenameToStore);
-        } else{
-            $filenameToStore = '';
-        }
-
         //
         $resident = new Resident();
         $resident->lastname = $request->lastname;
@@ -100,7 +82,6 @@ class ResidentController extends Controller
         $resident->contact_num = $request->contact_num;
         $resident->voters_id = $request->voters_id;
         $resident->precint_num = $request->precint_num;
-        $resident->img = $filenameToStore;
         $resident->save();
 
         if ($resident->save()){
@@ -162,22 +143,6 @@ class ResidentController extends Controller
             'contact_num' => 'required'
         ]);
 
-        if($request->hasFile('img')){
-
-            $filenameWithExt = $request->file('img')->getClientOriginalName();
-
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            
-            $extension = $request->file('img')->getClientOriginalExtension();
-
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
-            $path = $request->file('img')->storeAs('public/img', $filenameToStore);
-        } else{
-               
-            $filenameToStore = '';
-        }
-
         //
         $resident = \App\Models\Resident::find($id);
         $resident->lastname = $request->lastname;
@@ -201,7 +166,6 @@ class ResidentController extends Controller
         $resident->contact_num = $request->contact_num;
         $resident->voters_id = $request->voters_id;
         $resident->precint_num = $request->precint_num;
-        $resident->img = $filenameToStore;
         $resident->save();
 
         return redirect('/residents');

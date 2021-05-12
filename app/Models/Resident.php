@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Resident extends Model
 {
     use HasFactory;
-
-    // relationship between resident and transaction
-    public function transaction()
-    {
-        return $this->hasMany(Transaction::class);
-    }
 }
