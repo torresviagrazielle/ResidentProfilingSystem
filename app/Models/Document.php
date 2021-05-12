@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Resident extends Model
+class Document extends Model
 {
     use HasFactory;
 
-    // relationship between resident and transaction
+    
+    // relationship between document and transaction
     public function transaction()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsTo(Transaction::class);
     }
 }

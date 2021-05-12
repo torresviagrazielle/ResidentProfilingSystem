@@ -40,4 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // relationship between resident and user
+    public function resident()
+    {
+        return $this->hasMany(Resident::class);
+    }
+
+    // relationship between transaction and user
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
