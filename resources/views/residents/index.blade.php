@@ -15,13 +15,8 @@
                                 <th> ID </th>
                                 <th> Name </th>
                                 <th> Address </th>
+                                <th> Sex </th>
                                 <th> Civil Status </th>
-                                <th> Profession/Occupation</th>
-                                <th> Tin No. </th>
-                                <th> Period of Residence </th>
-                                <th> Contact No.</th>
-                                <th> Voter's Id No. </th>
-                                <th> Precint Assignment No. </th>
                                 <th> </th>
                                 <th> Action </th>
                                 <th> </th>
@@ -33,13 +28,8 @@
                                 <td> {{ $resident->id }} </td>
                                 <td> {{ $resident->lastname }}, {{ $resident->firstname }} {{ $resident->middlename }} {{ $resident->extname }}</td>
                                 <td> {{ $resident->house_num }} {{ $resident->street }}, {{ $resident->barangay }}</td>
+                                <td> {{ $resident->sex }}</td>
                                 <td> {{ $resident->civil_status }}</td>
-                                <td> {{ $resident->occupation }} </td>
-                                <td> {{ $resident->tin_num }}</td>
-                                <td> {{ $resident->residence_period }}</td>
-                                <td> {{ $resident->contact_num }} </td>
-                                <td> {{ $resident->voters_id }}</td>
-                                <td> {{ $resident->precint_num }}</td>
                                 <td> <a href="/residents/{{$resident->id}}" class="btn btn-info"> View </a> </td>
                                 <td> <a href="/residents/{{$resident->id}}/edit" class="btn btn-warning"> Edit </a> </td>
                                 <td> 
