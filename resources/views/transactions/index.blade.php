@@ -2,8 +2,10 @@
 
 @section('content')
 <div class="container">
+<a class="btn button btn-primary" href="/residents">Resident Profiling</a>
+<a class="btn button btn-primary" href="/transactions">Document Issuance</a> <br>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {{-- create a new post for transaction --}}
             <a class="btn button btn-primary" href="/transactions/create">Create New</a>
             <br><br>
@@ -39,7 +41,11 @@
                                 </td>
                             </tr>
                             @endforeach
+                            
                         </tbody>
+                    </table>
+
+                        Total # of Document Request  {{ $count }}
                 </div>
             </div>
         </div>

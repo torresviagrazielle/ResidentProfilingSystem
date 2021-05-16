@@ -25,7 +25,7 @@
  
                             <!--Purpose-->
                             <div class="form-group row">
-                                <label for="purpose" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                                <label for="purpose" class="col-md-4 col-form-label text-md-right">{{ __('Purpose') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" name="purpose" value="{{ $transaction->purpose }}" autofocus>        
@@ -40,7 +40,7 @@
 
                             <!--Place Issued-->
                             <div class="form-group row">
-                                <label for="place_issued" class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}</label>
+                                <label for="place_issued" class="col-md-4 col-form-label text-md-right">{{ __('Place Issued') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="place_issued" type="text" class="form-control @error('place_issued') is-invalid @enderror" name="place_issued" value="{{ $transaction->place_issued }}" autofocus>        

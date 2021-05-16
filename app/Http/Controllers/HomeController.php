@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Transaction;
+use App\Models\Resident;
+use App\Models\Document;
+
+
 class HomeController extends Controller
 {
     /**
@@ -13,8 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-    }
+        $this->middleware('auth')->except('index');    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $residents = Resident::where('id','!=','')->orderBy('created_at','desc')->get();
+        $count = Resident::where('lastname','!=','')->count();
+        return view('welcome', compact('residents', 'count'));    
     }
 }

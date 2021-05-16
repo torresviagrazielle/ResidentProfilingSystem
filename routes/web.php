@@ -19,7 +19,7 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
@@ -33,19 +33,19 @@ Route::resources([
 
 ]);
 
-Auth::routes(); 
+Auth::routes(); */
 
-/*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Auth::routes();
 
 Route::get('/home', function () {
-    return redirect('/posts');
+    return redirect('/residents');
 });
 
-Route::get('/delete-blank-post', [App\Http\Controllers\PostController::class, 'deleteBlank']);
-Route::get('/posts-archive', [App\Http\Controllers\PostController::class, 'archive']);
-Route::get('/posts/{id}/restore', [App\Http\Controllers\PostController::class, 'restore']);
-Route::resource('/posts', App\Http\Controllers\PostController::class);
-Route::resource('/comments',  App\Http\Controllers\CommentController::class);
-*/
+Route::get('/delete-blank-post', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
+Route::get('/transactions-archive', [App\Http\Controllers\TransactionController::class, 'archive']);
+Route::get('/transactions/{id}/restore', [App\Http\Controllers\TransactionController::class, 'restore']);
+Route::resource('/transactions', App\Http\Controllers\TransactionController::class);
+Route::resource('/residents',  App\Http\Controllers\ResidentController::class);
+Route::resource('/documents', DocumentController::class);

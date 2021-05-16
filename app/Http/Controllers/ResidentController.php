@@ -8,6 +8,7 @@ use App\Models\Document;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
@@ -22,8 +23,12 @@ class ResidentController extends Controller
     public function index()
     {
         //
-        $residents = \App\Models\Resident::get();
-        return view('residents.index', compact('residents'));
+    
+        //$user = User::find(Auth::id()); 
+        $user = Auth::user();
+        $residents = $user->resident()->orderBy('created_at','desc')->get();
+        $count = $user->resident()->where('id','!=','')->count();
+        return view('residents.index', compact('residents', 'count'));
     }
 
     /**
@@ -101,13 +106,14 @@ class ResidentController extends Controller
         $resident->voters_id = $request->voters_id;
         $resident->precint_num = $request->precint_num;
         $resident->img = $filenameToStore;
+        $resident->user_id = auth()->user()->id;
         $resident->save();
 
         if ($resident->save()){
             return redirect('/residents')->with('status','Sucessfully save');
         }
 
-        return redirect('/residents');
+    
     }
 
     /**
@@ -116,11 +122,15 @@ class ResidentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Resident $resident)
     {
         //
-        $resident = \App\Models\Resident::find($id);
+        $resident = Resident::find($resident->id);
+        //$resident = \App\Models\Resident::find($id);
+        //$transactions = $resident->transaction;
         return view('residents.show', compact('resident'));
+
+
     }
 
     /**
@@ -129,11 +139,17 @@ class ResidentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Resident $resident)
     {
         //
-        $resident = \App\Models\Resident::find($id);
+        //$resident = \App\Models\Resident::find($id);
+        //return view('residents.edit', compact('resident'));
+
+        $resident = Resident::find($resident->id);
+        $resident->user_id = auth()->user()->id;
+        //$resident = \App\Models\Resident::find($id);
         return view('residents.edit', compact('resident'));
+
     }
 
     /**
@@ -202,6 +218,8 @@ class ResidentController extends Controller
         $resident->voters_id = $request->voters_id;
         $resident->precint_num = $request->precint_num;
         $resident->img = $filenameToStore;
+        $resident->user_id = auth()->user()->id;
+
         $resident->save();
 
         return redirect('/residents');
