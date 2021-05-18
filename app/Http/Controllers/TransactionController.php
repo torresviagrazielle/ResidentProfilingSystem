@@ -27,10 +27,14 @@ class TransactionController extends Controller
     {
         //
         //$transactions = \App\Models\Transaction::get();
+        $documents = Document::get();
         $user = Auth::user();
         $transactions = $user->transaction()->orderBy('created_at','desc')->get();
+        
         $count = $user->transaction()->where('id','!=','')->count();
-        return view('transactions.index', compact('transactions', 'count'));
+        return view('transactions.index', compact('transactions', 'count', 'documents'));
+
+        
     }
 
     /**
@@ -41,8 +45,8 @@ class TransactionController extends Controller
     public function create()
     {
         //
-        return view('transactions.create');
-
+        $documents = Document::all();
+        return view('transactions.create', compact('documents'));
     }
 
     /**
@@ -55,11 +59,15 @@ class TransactionController extends Controller
     {
         //
         $request->validate([
+            'resident_id' => 'required',
+            'document_id' => 'required',
             'purpose' => 'required',
             'place_issued' => 'required'
         ]);
 
         $transaction = new Transaction();
+        $transaction->resident_id = $request->resident_id;
+        $transaction->document_id = $request->document_id;
         $transaction->purpose = $request->purpose;
         $transaction->place_issued = $request->place_issued;
         $transaction->user_id = auth()->user()->id;
@@ -96,10 +104,10 @@ class TransactionController extends Controller
     {
         //
         //$transaction = \App\Models\Transaction::find($id);
+        $documents = Document::all();
         $transaction = Transaction::find($transaction->id);
-        //$documents = $transaction->documents;
         $transaction->user_id = auth()->user()->id;
-        return view('transactions.edit', compact('transaction'));
+        return view('transactions.edit', compact('transaction', 'documents'));
     }
 
     /**
@@ -113,11 +121,15 @@ class TransactionController extends Controller
     {
         //
         $request->validate([
+            'resident_id' => 'required',
+            'document_id' => 'required',
             'purpose' => 'required',
             'place_issued' => 'required'
         ]);
 
         $transaction = new Transaction();
+        $transaction->resident_id = $request->resident_id;
+        $transaction->document_id = $request->document_id;
         $transaction->purpose = $request->purpose;
         $transaction->place_issued = $request->place_issued;
         $transaction->user_id = auth()->user()->id;

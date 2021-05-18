@@ -18,7 +18,6 @@
                                 <th> Name of Resident </th>
                                 <th> Type of Document </th>
                                 <th> Purpose </th>
-                                <th> </th>
                                 <th> Action </th>
                                 <th> </th>
                             </tr>
@@ -27,11 +26,15 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td> {{ $transaction->id }} </td>
-                                <td> </td>
-                                <td> </td>
+                                <td> {{ $transaction->resident_id }}</td>
+                                <td> 
+                                    @foreach ($documents as $document)
+                                        {{ $document->document_type }}
+                                    @endforeach
+                                </td>
                                 <td> {{ $transaction->purpose }}</td>
-                                <td> <a href="/transactions/{{$transaction->id}}" class="btn btn-info"> View </a> </td>
-                                <td> <a href="/transactions/{{$transaction->id}}/edit" class="btn btn-warning"> Edit </a> </td>
+                                <td> <a href="/transactions/{{$transaction->id}}" class="btn btn-info"> View </a> 
+                                     <a href="/transactions/{{$transaction->id}}/edit" class="btn btn-warning"> Edit </a> </td>
                                 <td> 
                                     <form method="POST" action=" {{ route('transactions.destroy', $transaction->id)}}">
                                         @method('DELETE')

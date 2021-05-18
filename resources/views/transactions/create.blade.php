@@ -21,12 +21,47 @@
                     <form method="POST" action="/transactions" enctype="multipart/form-data">
                         @csrf
 
+                        <!--Resident Name-->
+                        <div class="form-group row">
+                            <label for="resident_id" class="col-md-4 col-form-label text-md-right">{{ __('Resident Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="resident_id" type="text" class="form-control @error('resident_id') is-invalid @enderror" name="resident_id" value="{{ old('resident_id') }}" autofocus>        
+                            </div>
+
+                            @error('resident_id')
+                                <span class="invalid-feedback" role="alert"> 
+                                    {{ $message }}
+                                </span>                                
+                            @enderror
+                        </div>
+
+                        <!--Type of Document-->
+                        <div class="form-group row">
+                            <label for="document_id" class="col-md-4 col-form-label text-md-right">{{ __('Type of Document') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="document_id" type="text" class="form-control @error('document_id') is-invalid @enderror" name="document_id" value="{{ old('document_id') }}" autofocus>   
+                                    @foreach($documents as $row)
+                                        <option value="{{ $row->id }}">{{ $row->document_type }}</option>
+                                    @endforeach
+                                </select>     
+                            </div>
+
+                            @error('document_id')
+                                <span class="invalid-feedback" role="alert"> 
+                                    {{ $message }}
+                                </span>                                
+                            @enderror
+
+                        </div>
+
                         <!--Purpose-->
                         <div class="form-group row">
                             <label for="purpose" class="col-md-4 col-form-label text-md-right">{{ __('Purpose') }}</label>
 
                             <div class="col-md-6">
-                                <input id="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" name="purpose" value="{{ old('purpose') }}" autofocus>        
+                                <input id="purpose" type="text" class="form-control @error('purpose') is-invalid @enderror" name="purpose" value="{{ old('purpose') }}" autofocus> 
                             </div>
 
                             @error('purpose')

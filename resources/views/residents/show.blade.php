@@ -6,7 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
            
-            <a class="btn button btn-info" href="/residents">Back</a> <br><br>
+            <a class="btn button btn-info" href="/residents">Back</a> 
+            <a class="btn button btn-info" href="/transactions">Request Document</a> <br><br><br><br>
             
             <div class="card">       
                 <div class="card-body">

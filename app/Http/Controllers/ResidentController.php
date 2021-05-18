@@ -126,8 +126,6 @@ class ResidentController extends Controller
     {
         //
         $resident = Resident::find($resident->id);
-        //$resident = \App\Models\Resident::find($id);
-        //$transactions = $resident->transaction;
         return view('residents.show', compact('resident'));
 
 

@@ -22,8 +22,8 @@ class DocumentController extends Controller
     public function index()
     {
         //
-        $documents = \App\Models\Document::get();
-        return view('documents.index', compact('documents'));
+        //$documents = \App\Models\Document::get();
+        //return view('documents.index', compact('documents'));
     }
 
     /**
@@ -34,7 +34,7 @@ class DocumentController extends Controller
     public function create()
     {
         //
-        return view('documents.create');
+        //return view('documents.create');
     }
 
     /**
@@ -47,6 +47,16 @@ class DocumentController extends Controller
     {
         //
         $request->validate([
+            'document_type' => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['document_type'] = Auth::id();
+
+        Document::create($input);
+        return back();
+
+        /*$request->validate([
             'document_type' => 'required',
         ]);
 
@@ -56,7 +66,7 @@ class DocumentController extends Controller
 
         if ($document->save()){
             return redirect('/documents')->with('status','Sucessfully save');
-        }
+        }*/
     }
 
     /**
@@ -65,11 +75,11 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Document $document)
     {
         //
-        $document = \App\Models\Document::find($id);
-        return view('documents.show', compact('document'));
+        //$document = \App\Models\Document::find($id);
+        //return view('documents.show', compact('document'));
 
     }
 
@@ -79,11 +89,11 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Document $document)
     {
         //
-        $document = \App\Models\Document::find($id);
-        return view('documents.show', compact('document'));
+        //$document = \App\Models\Document::find($id);
+        //return view('documents.show', compact('document'));
 
     }
 
@@ -94,10 +104,10 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $document)
     {
         //
-        $request->validate([
+        /*$request->validate([
             'document_type' => 'required',
         ]);
 
@@ -105,7 +115,7 @@ class DocumentController extends Controller
         $document->document_type = $request->document_type;
         $document->save();
 
-        return redirect('/documents');
+        return redirect('/documents'); */
     }
 
     /**
@@ -114,13 +124,13 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $document)
     {
         //
-        $document = \App\Models\Document::find($id);
+        /*$document = \App\Models\Document::find($id);
         $document->delete();
 
-        return redirect('/documents');
+        return redirect('/documents');*/
         
     }
 }

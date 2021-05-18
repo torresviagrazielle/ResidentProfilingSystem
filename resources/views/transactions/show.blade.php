@@ -10,6 +10,8 @@
             
             <div class="card">       
                 <div class="card-body">
+                    Resident Name : {{ $transaction->resident_id }} <br>
+                    Type of Document : {{ $transaction->document_id }} <br>
                     Purpose : {{ $transaction->purpose }} <br>
                     Place Issued : {{ $transaction->place_issued }} <br>
                     Created At : {{ $transaction->created_at }}
