@@ -229,12 +229,36 @@ class ResidentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Resident $resident)
     {
         //
-        $resident = \App\Models\Resident::find($id);
+        //$resident = \App\Models\Resident::find($id);
         $resident->delete();
 
         return redirect('/residents');
     }
+
+    public function deleteBlank()
+    {
+        $delete = Resident::where('lastname','=','')->delete();
+
+        return redirect('/residents');
+    }
+
+    public function archive()
+    {
+        $residents = Resident::onlyTrashed()->get();
+
+        return view('residents.archive',compact('residents'));
+    }
+
+    public function restore($id)
+    {
+        $resident = Resident::withTrashed()->find($id)->restore();
+        
+        return redirect('/residents');
+    }
+
+
+
 }

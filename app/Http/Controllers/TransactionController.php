@@ -27,10 +27,10 @@ class TransactionController extends Controller
     {
         //
         //$transactions = \App\Models\Transaction::get();
+        //$documents = Document::where('id','=','transaction.document_id')->pluck('document_type');
         $documents = Document::get();
         $user = Auth::user();
-        $transactions = $user->transaction()->orderBy('created_at','desc')->get();
-        
+        $transactions = $user->transaction()->orderBy('created_at','desc')->take(5)->get();
         $count = $user->transaction()->where('id','!=','')->count();
         return view('transactions.index', compact('transactions', 'count', 'documents'));
 
@@ -145,13 +145,33 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(Transaction $transaction)
     {
         //
-        $transactions = \App\Models\Transaction::find($id);
-        $transactions->delete();
+        $transaction->delete();
 
         return redirect('/transactions');
+    }
 
+    public function deleteBlank()
+    {
+        $delete = Transaction::where('purpose','=','')->delete();
+
+        return redirect('/transactions');
+    }
+
+    public function archive()
+    {
+        $transactions = Transaction::onlyTrashed()->get();
+
+        return view('transactions.archive',compact('transactions'));
+    }
+
+    public function restore($id)
+    {
+        $transaction = Transaction::withTrashed()->find($id)->restore();
+        
+        return redirect('/transactions');
     }
 }

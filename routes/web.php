@@ -40,12 +40,17 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('in
 Auth::routes();
 
 Route::get('/home', function () {
-    return redirect('/residents');
+    return redirect('/transactions');
 });
 
-Route::get('/delete-blank-post', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
+Route::get('/delete-blank-transaction', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
 Route::get('/transactions-archive', [App\Http\Controllers\TransactionController::class, 'archive']);
 Route::get('/transactions/{id}/restore', [App\Http\Controllers\TransactionController::class, 'restore']);
+
+Route::get('/delete-blank-resident', [App\Http\Controllers\ResidentController::class, 'deleteBlank']);
+Route::get('/residents-archive', [App\Http\Controllers\ResidentController::class, 'archive']);
+Route::get('/residents/{id}/restore', [App\Http\Controllers\ResidentController::class, 'restore']);
+
 Route::resource('/transactions', App\Http\Controllers\TransactionController::class);
 Route::resource('/residents',  App\Http\Controllers\ResidentController::class);
 Route::resource('/documents', DocumentController::class);
