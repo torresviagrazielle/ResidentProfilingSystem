@@ -6,6 +6,20 @@
 
 
 <div class="container">
+    <!--HEADER-->
+    <a class="btn button btn-light" style="font-size: 20px; font-weight:bold;" href="/residents"><</a>
+    <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Resident Archive</h3>    
+    <hr>
+    <div class="row justify-content-center">
+        <a class="btn button btn-light" href="/dashboard">Dashboard</a>
+        <a class="btn button btn-light " href="/residents">Resident Profiling</a>
+        <a class="btn button btn-light" href="/transactions">Document Issuance</a>
+        <a class="btn button btn-light active" href="/residents-archive">Resident Archive</a>
+        <a class="btn button btn-light" href="/transactions-archive">Document Issuance Archive</a>
+    </div>
+    <hr>
+    <br>
+
     <div class="row justify-content-center">
         <div class="col-md-10">
             
@@ -14,9 +28,6 @@
                     {{ session('message') }}
               </div>
             @endif
-
-            <a class="btn button btn-info" href="/residents">Back</a>
-            <br><br>
             <div class="card">       
                 <div class="card-body">
                     <table class="table">
