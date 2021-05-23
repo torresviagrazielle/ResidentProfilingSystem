@@ -27,14 +27,12 @@ class TransactionController extends Controller
     {
         //
         //$transactions = \App\Models\Transaction::get();
-        //$documents = Document::where('id','=','transaction.document_id')->pluck('document_type');
-        $documents = Document::get();
+        $documents = Document::where('id','=','transaction.document_id')->pluck('document_type');
+        //$documents = Document::get();
         $user = Auth::user();
         $transactions = $user->transaction()->orderBy('created_at','desc')->take(5)->get();
         $count = $user->transaction()->where('id','!=','')->count();
         return view('transactions.index', compact('transactions', 'count', 'documents'));
-
-        
     }
 
     /**
@@ -173,5 +171,22 @@ class TransactionController extends Controller
         $transaction = Transaction::withTrashed()->find($id)->restore();
         
         return redirect('/transactions');
+    }
+
+    public function search(Request $request, Transaction $transaction){
+
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $transactions = Transaction::query()
+            ->where('resident_id', 'LIKE', "%{$search}%")
+            ->orWhere('document_id', 'LIKE', "%{$search}%")
+            ->orWhere('purpose', 'LIKE', "%{$search}%")
+            ->orWhere('place_issued', 'LIKE', "%{$search}%")
+            ->get();
+    
+        // Return the search view with the resluts compacted
+        return view('transactions.search', compact('transactions'));
     }
 }

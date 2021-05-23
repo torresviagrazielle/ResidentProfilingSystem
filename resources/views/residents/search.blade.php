@@ -11,12 +11,12 @@
             {{-- create a new post for resident --}}
             <a class="btn button btn-primary" href="/residents/create">Create New</a>
             <br><br>
-            <form action="{{ route('search') }}" method="GET">
-                    <input class="form-control col-md-3" placeholder="Search" type="text" name="search"/>
-                    <button class="btn button btn-primary" type="submit">Search</button>
-            </form> <br>
             <div class="card">
                 <div class="card-body">
+                <form action="{{ route('search') }}" method="GET">
+                    <input class="form-control col-md-3" placeholder="Search" type="text" name="search"/>
+                    <button class="btn button btn-primary" type="submit">Search</button>
+                </form>
                     <table class="table">
                         <thead>
                             <tr class="justify-content-center">
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        
+                        @if($residents->isNotEmpty())
                             @foreach ($residents as $resident)
                             <tr>
                                 <td> {{ $resident->id }} </td>
@@ -50,10 +50,14 @@
                                 </td>
                             </tr>
                             @endforeach
+                        @else 
+                            <div>
+                                <p>No resident/s found</p>
+                            </div>
+                        @endif
                         </tbody>
                     </table>
-
-                    Total # of Resident  {{ $count }}
+                   
                 </div>
             </div>
         </div>

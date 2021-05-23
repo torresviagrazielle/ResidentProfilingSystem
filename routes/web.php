@@ -40,7 +40,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('in
 Auth::routes();
 
 Route::get('/home', function () {
-    return redirect('/transactions');
+    return redirect('/residents');
 });
 
 Route::get('/delete-blank-transaction', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
@@ -54,3 +54,7 @@ Route::get('/residents/{id}/restore', [App\Http\Controllers\ResidentController::
 Route::resource('/transactions', App\Http\Controllers\TransactionController::class);
 Route::resource('/residents',  App\Http\Controllers\ResidentController::class);
 Route::resource('/documents', DocumentController::class);
+
+Route::get('/search', [App\Http\Controllers\ResidentController::class, 'search'])->name('search');
+Route::get('/search', [App\Http\Controllers\TransactionController::class, 'search'])->name('search');
+

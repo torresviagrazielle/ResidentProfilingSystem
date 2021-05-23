@@ -260,5 +260,37 @@ class ResidentController extends Controller
     }
 
 
+    public function search(Request $request, Resident $resident){
+
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $residents = Resident::query()
+            ->where('lastname', 'LIKE', "%{$search}%")
+            ->orWhere('firstname', 'LIKE', "%{$search}%")
+            ->orWhere('middlename', 'LIKE', "%{$search}%")
+            ->orWhere('extname', 'LIKE', "%{$search}%")
+            ->orWhere('house_num', 'LIKE', "%{$search}%")
+            ->orWhere('street', 'LIKE', "%{$search}%")
+            ->orWhere('barangay', 'LIKE', "%{$search}%")
+            ->orWhere('city', 'LIKE', "%{$search}%")
+            ->orWhere('citizenship', 'LIKE', "%{$search}%")
+            ->orWhere('religion', 'LIKE', "%{$search}%")
+            ->orWhere('sex', 'LIKE', "%{$search}%")
+            ->orWhere('birth_date', 'LIKE', "%{$search}%")
+            ->orWhere('birth_place', 'LIKE', "%{$search}%")
+            ->orWhere('age', 'LIKE', "%{$search}%")
+            ->orWhere('civil_status', 'LIKE', "%{$search}%")
+            ->orWhere('tin_num', 'LIKE', "%{$search}%")
+            ->orWhere('voters_id', 'LIKE', "%{$search}%")
+            ->orWhere('precint_num', 'LIKE', "%{$search}%")
+            ->get();
+    
+        // Return the search view with the resluts compacted
+        return view('residents.search', compact('residents'));
+    }
+
+
 
 }

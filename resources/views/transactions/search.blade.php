@@ -36,13 +36,13 @@
                                 <td> {{ $transaction->resident_id }}</td>
                                 <td> {{ $transaction->document_id }}</td>
                                 <td> {{ $transaction->purpose }}</td>
-                                <td> <a href="/transactions/{{$transaction->id}}" class="btn button btn-info"> View </a> 
-                                     <a href="/transactions/{{$transaction->id}}/edit" class="btn button btn-warning"> Edit </a> </td>
+                                <td> <a href="/transactions/{{$transaction->id}}" class="btn btn-info"> View </a> 
+                                     <a href="/transactions/{{$transaction->id}}/edit" class="btn btn-warning"> Edit </a> </td>
                                 <td> 
                                     <form method="POST" action=" {{ route('transactions.destroy', $transaction->id)}}">
                                         @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn button btn-danger" style="margin-left: -105px;">Archive</button>
+                                            <button type="submit" class="btn btn-danger" style="margin-left: -105px;">Archive</button>
                                     </form>
                                 </td>
                             </tr>
@@ -50,9 +50,7 @@
                             
                         </tbody>
                     </table>
-
-                        Total # of Document Request  {{ $count }}
-                </div>
+\                </div>
             </div>
         </div>
     </div>

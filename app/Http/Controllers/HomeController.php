@@ -29,6 +29,9 @@ class HomeController extends Controller
     {
         $residents = Resident::where('id','!=','')->orderBy('created_at','desc')->get();
         $count = Resident::where('lastname','!=','')->count();
-        return view('welcome', compact('residents', 'count'));    
+        $voter = Resident::where('precint_num','!=','')->count();
+        $female = Resident::where('sex','=','Female')->count();
+        $male = Resident::where('sex','=','Male')->count();
+        return view('home', compact('residents', 'count', 'voter', 'female', 'male'));    
     }
 }
