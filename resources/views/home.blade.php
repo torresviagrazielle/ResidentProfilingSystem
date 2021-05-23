@@ -24,7 +24,7 @@
 
                           <div class="row">
                             <div class="col align-self-start">
-                                <img style="height:500px;"; src="https://i2.wp.com/cumminsandwhite.com/wp-content/uploads/2017/03/Black-Desk-Background.jpg" class="img-fluid" alt="...">
+                                <img style="height:500px;"; src="https://conceptdraw.com/a2247c3/p14/preview/640/pict--image-wireframe---vector-stencils-library.png--diagram-flowchart-example.png" class="img-fluid" alt="...">
                             </div>
                             <div class="col align-self-center">
                                     <div class="form-group row">
