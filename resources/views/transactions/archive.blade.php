@@ -14,9 +14,6 @@
                     {{ session('message') }}
               </div>
             @endif
-
-            <a class="btn button btn-info" href="/transactions">Back</a>
-            <br><br>
             <div class="card">       
                 <div class="card-body">
                     <table class="table">

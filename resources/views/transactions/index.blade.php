@@ -2,11 +2,18 @@
 
 @section('content')
 <div class="container">
-    <a class="btn button btn-primary" href="/dashboard">Dashboard</a>
-    <a class="btn button btn-primary" href="/residents">Resident Profiling</a>
-    <a class="btn button btn-primary" href="/transactions">Document Issuance</a>
-    <a class="btn button btn-primary" href="/residents-archive">Resident Archive</a>
-    <a class="btn button btn-primary" href="/transactions-archive">Document Issuance Archive</a>  <br>
+    <!--HEADER-->
+    <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Document Issuance</h3>    
+    <hr>
+    <div class="row justify-content-center">
+        <a class="btn button btn-light" href="/dashboard">Dashboard</a>
+        <a class="btn button btn-light" href="/residents">Resident Profiling</a>
+        <a class="btn button btn-light active" href="/transactions">Document Issuance</a>
+        <a class="btn button btn-light" href="/residents-archive">Resident Archive</a>
+        <a class="btn button btn-light" href="/transactions-archive">Document Issuance Archive</a>
+    </div>
+    <hr>
+    <br>
 
     <div class="row justify-content-center">
         <div class="col-md-12">

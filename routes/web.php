@@ -60,7 +60,7 @@ Route::resource('/dashboard',  App\Http\Controllers\DashboardController::class);
 Route::resource('/documents', DocumentController::class);
 
 Route::get('/search', [App\Http\Controllers\ResidentController::class, 'search'])->name('search');
-Route::get('/search', [App\Http\Controllers\TransactionController::class, 'search'])->name('search');
+//Route::get('/search', [App\Http\Controllers\TransactionController::class, 'search'])->name('search');
 
 //Route::get('/print', 'ResidentController@exportCsv');
 Route::get('/print', [App\Http\Controllers\ResidentController::class, 'exportCsv'])->name('exportCsv');
