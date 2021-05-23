@@ -291,6 +291,58 @@ class ResidentController extends Controller
         return view('residents.search', compact('residents'));
     }
 
+    public function exportCsv(Request $request) {
+    $fileName = 'ResidentsList.csv';
+    $residents = Resident::all();
+
+            $headers = array(
+                "Content-type"        => "text/csv",
+                "Content-Disposition" => "attachment; filename=$fileName",
+                "Pragma"              => "no-cache",
+                "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+                "Expires"             => "0"
+            );
+
+            $columns = array('ID', 'Last Name', 'First Name', 'Middle Name', 'Ext Name', 'House No', 'Street', 'Barangay', 'City', 'Citizenship', 'Religion', 'Sex', 'Birth Date', 'Birth Place', 'Age', 'Civil Status', 'Occupation', 'TIN No', 'Residence Period', 'Contact No', 'Voters ID', 'Precint No');
+
+            $callback = function() use($residents, $columns) {
+                $file = fopen('php://output', 'w');
+                fputcsv($file, $columns);
+
+                foreach ($residents as $resident) {
+                    $row['ID']  = $resident->id;
+                    $row['Last Name']    = $resident->lastname;
+                    $row['First Name']    = $resident->firstname;
+                    $row['Middle Name']  = $resident->middlename;
+                    $row['Ext Name']  = $resident->extname;
+                    $row['House No']  = $resident->house_num;
+                    $row['Street']  = $resident->street;
+                    $row['Barangay']  = $resident->barangay;
+                    $row['City']   = $resident->city;
+                    $row['Citizenship']  = $resident->citizenship;
+                    $row['Religion']  = $resident->religion;
+                    $row['Sex']  = $resident->sex;
+                    $row['Birth Date']  = $resident->birth_date;
+                    $row['Birth Place']  = $resident->birth_place;
+                    $row['Age']  = $resident->age;
+                    $row['Civil Status']  = $resident->civil_status;
+                    $row['Occupation']  = $resident->occupation;
+                    $row['TIN No']  = $resident->tin_num;
+                    $row['Residence Period']  = $resident->residence_period;
+                    $row['Contact No']  = $resident->contact_num;
+                    $row['Voters ID']  = $resident->voters_id;
+                    $row['Precint No']  = $resident->precint_num;
+
+
+                    fputcsv($file, array($row['ID'], $row['Last Name'], $row['First Name'], $row['Middle Name'], $row['Ext Name'], $row['House No'], $row['Street'], $row['Barangay'], $row['City'], $row['Citizenship'], $row['Religion'], $row['Sex'], $row['Birth Date'], $row['Birth Place'], $row['Age'],  $row['Civil Status'], $row['Occupation'], $row['TIN No'], $row['Residence Period'], $row['Contact No'], $row['Voters ID'], $row['Precint No']));
+                }
+
+                fclose($file);
+            };
+
+            return response()->stream($callback, 200, $headers);
+        }
+
 
 
 }

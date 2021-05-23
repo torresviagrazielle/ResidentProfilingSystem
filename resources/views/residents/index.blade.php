@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container">
+    <a class="btn button btn-primary" href="/dashboard">Dashboard</a>
     <a class="btn button btn-primary" href="/residents">Resident Profiling</a>
     <a class="btn button btn-primary" href="/transactions">Document Issuance</a>
     <a class="btn button btn-primary" href="/residents-archive">Resident Archive</a>
     <a class="btn button btn-primary" href="/transactions-archive">Document Issuance Archive</a>  <br>
+    <span data-href="/print" id="export" class="btn button btn-success" onclick="exportResidents(event.target);">Print CSV</span> <br>
     <div class="row justify-content-center">
         <div class="col-md-12">
             {{-- create a new post for resident --}}
@@ -59,4 +61,10 @@
         </div>
     </div>
 </div>
+<script>
+   function exportResidents(_this) {
+      let _url = $(_this).data('href');
+      window.location.href = _url;
+   }
+</script>
 @endsection

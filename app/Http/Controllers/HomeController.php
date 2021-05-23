@@ -25,13 +25,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $residents = Resident::where('id','!=','')->orderBy('created_at','desc')->get();
         $count = Resident::where('lastname','!=','')->count();
         $voter = Resident::where('precint_num','!=','')->count();
         $female = Resident::where('sex','=','Female')->count();
         $male = Resident::where('sex','=','Male')->count();
-        return view('home', compact('residents', 'count', 'voter', 'female', 'male'));    
-    }
+    
+        return view('home', compact('residents', 'count', 'voter', 'female', 'male'));  
+            }
 }
