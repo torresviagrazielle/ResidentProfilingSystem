@@ -10,13 +10,14 @@
         
     </head>
     <body>
-        @extends('layouts.app')
+        @extends('layouts.loginapp')
 
 @section('content')
 <div class="container">
     
-   <div class="row justify-content-right">
-        <div class="col-md-12">
+    
+   <div class="row align-items-center">
+        
             <div class="card">
                     <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -26,7 +27,16 @@
                             <div class="col align-self-start">
                                 <img style="height:500px;"; src="https://conceptdraw.com/a2247c3/p14/preview/640/pict--image-wireframe---vector-stencils-library.png--diagram-flowchart-example.png" class="img-fluid" alt="...">
                             </div>
+
                             <div class="col align-self-center">
+
+                                <div class="form-group row">
+                                    <div style="text-align:center;" class="col-md-8 offset-md-2">
+                                        <h3>Barangay Profiling<br>& Document Issuance<br>Management System</h3>
+                                    </div>
+                                </div>
+
+
                                     <div class="form-group row">
                                     <div class="col-md-8 offset-md-2">
                                         <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -73,7 +83,12 @@
                                     <a style="float:right"; class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                    @endif
+
+                                    @guest
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                       
+                                    @endguest
                                 </div>
                             </div>
                         </div>
@@ -81,7 +96,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+   
     </div>
 
 </div>
