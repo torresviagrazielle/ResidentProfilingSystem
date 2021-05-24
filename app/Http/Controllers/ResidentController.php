@@ -176,7 +176,7 @@ class ResidentController extends Controller
             'contact_num' => 'required'
         ]);
 
-        if($request->hasFile('img')){
+        /*if($request->hasFile('img')){
 
             $filenameWithExt = $request->file('img')->getClientOriginalName();
 
@@ -190,7 +190,7 @@ class ResidentController extends Controller
         } else{
                
             $filenameToStore = '';
-        }
+        }*/
 
         //
         $resident = \App\Models\Resident::find($id);
@@ -215,7 +215,7 @@ class ResidentController extends Controller
         $resident->contact_num = $request->contact_num;
         $resident->voters_id = $request->voters_id;
         $resident->precint_num = $request->precint_num;
-        $resident->img = $filenameToStore;
+        //$resident->img = $filenameToStore;
         $resident->user_id = auth()->user()->id;
 
         $resident->save();

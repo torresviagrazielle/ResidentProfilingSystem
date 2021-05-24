@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-        <title>Demo</title>
+        <title>Barangay Profiling & Document Issuance System</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Demo Project">
@@ -32,13 +32,14 @@
 
                                 <div class="form-group row">
                                     <div style="text-align:center;" class="col-md-8 offset-md-2">
-                                        <h3>Barangay Profiling<br>& Document Issuance<br>Management System</h3>
+                                        <h3>Barangay Profiling<br>and Document Issuance<br>Management System</h3>
                                     </div>
                                 </div>
 
 
                                     <div class="form-group row">
                                     <div class="col-md-8 offset-md-2">
+                                        <h2 style="padding-bottom: 15px;">Login</h2>
                                         <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                         @error('email')
