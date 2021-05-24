@@ -292,8 +292,8 @@ class ResidentController extends Controller
     }
 
     public function exportCsv(Request $request) {
-    $fileName = 'ResidentsList.csv';
-    $residents = Resident::all();
+        $fileName = 'ResidentsList.csv';
+        $residents = Resident::all();
 
             $headers = array(
                 "Content-type"        => "text/csv",
@@ -340,8 +340,8 @@ class ResidentController extends Controller
                 fclose($file);
             };
 
-            return response()->stream($callback, 200, $headers);
-        }
+        return response()->stream($callback, 200, $headers);
+    }
 
 
 

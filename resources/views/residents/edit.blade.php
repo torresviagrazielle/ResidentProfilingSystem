@@ -1,34 +1,49 @@
 @extends('layouts.app')
 
-
 @section('content')
- 
-    <div class="container">
-        <a class="btn button btn-light" style="font-size: 20px; font-weight:bold;" href="/residents"><</a>
-        <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Edit Resident Record</h3>    
-        <hr>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                 <br><br>
-                  <div class="card">       
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>                                        
-                                    @endforeach
-                                </ul>
-                            </div>                        
-                        @endif
+<style>
+    span {
+        color: red;
+    }
 
-                        <form method="POST" action=" {{ route('residents.update', $resident->id)}} " enctype="multipart/form-data">
-                            @method('PATCH')
-                            @csrf
- 
+    .card-header {
+        color: white;
+        background-color: gray;
+    }
+</style>
+<div class="container">
+    <!--HEADER-->
+    <div class="form-inline">
+        <a class="btn button btn-light mb-3" style="font-size: 20px; font-weight:bold;" href="/residents">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/></svg>  
+        </a>
+        <div class="form-group mb-2">
+            <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Edit Resident Record</h3>    
+        </div>
+    </div> <hr style="margin-top:-5px;">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <br><br>
+            <div class="card">    
+                <div class="card-header">Personal Information</div>   
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>                                        
+                                @endforeach
+                            </ul>
+                         </div>                        
+                    @endif
+
+                    <form method="POST" action=" {{ route('residents.update', $resident->id)}} " enctype="multipart/form-data">
+                        @method('PATCH')
+                        @csrf
                             <!--Lastname-->
                             <div class="form-group row">
-                                <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                                <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ $resident->lastname }}" autofocus>        
@@ -43,7 +58,7 @@
 
                             <!--Firstname-->
                             <div class="form-group row">
-                                <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}</label>
+                                <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ $resident->firstname }}" autofocus>        
@@ -85,7 +100,7 @@
 
                             <!--Street-->
                             <div class="form-group row">
-                                <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
+                                <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ $resident->street }}" autofocus>        
@@ -100,7 +115,7 @@
 
                             <!--Barangay-->
                             <div class="form-group row">
-                                <label for="barangay" class="col-md-4 col-form-label text-md-right">{{ __('Barangay') }}</label>
+                                <label for="barangay" class="col-md-4 col-form-label text-md-right">{{ __('Barangay') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="barangay" type="text" class="form-control @error('barangay') is-invalid @enderror" name="barangay" value="{{ $resident->barangay }}" autofocus>        
@@ -115,7 +130,7 @@
 
                             <!--City-->
                             <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $resident->city }}" autofocus>        
@@ -130,7 +145,7 @@
 
                             <!--Citizenship-->
                             <div class="form-group row">
-                                <label for="citizenship" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship') }}</label>
+                                <label for="citizenship" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="citizenship" type="text" class="form-control @error('citizenship') is-invalid @enderror" name="citizenship" value="{{ $resident->citizenship }}" autofocus>        
@@ -145,7 +160,7 @@
 
                             <!--Religion-->
                             <div class="form-group row">
-                                <label for="religion" class="col-md-4 col-form-label text-md-right">{{ __('Religion') }}</label>
+                                <label for="religion" class="col-md-4 col-form-label text-md-right">{{ __('Religion') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="religion" type="text" class="form-control @error('religion') is-invalid @enderror" name="religion" value="{{ $resident->religion }}" autofocus>        
@@ -160,7 +175,7 @@
 
                             <!--Sex-->
                             <div class="form-group row">
-                                <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
+                                <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="sex" type="text" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ $resident->sex }}" autofocus>        
@@ -175,7 +190,7 @@
 
                             <!--Date of Birth-->
                             <div class="form-group row">
-                                <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+                                <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="birth_date" type="date" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ $resident->birth_date }}" autofocus>        
@@ -190,7 +205,7 @@
 
                             <!--Birth Place-->
                             <div class="form-group row">
-                                <label for="birth_place" class="col-md-4 col-form-label text-md-right">{{ __('Birth Place') }}</label>
+                                <label for="birth_place" class="col-md-4 col-form-label text-md-right">{{ __('Birth Place') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="birth_place" type="text" class="form-control @error('birth_place') is-invalid @enderror" name="birth_place" value="{{ $resident->birth_place }}" autofocus>        
@@ -205,7 +220,7 @@
 
                             <!--Age-->
                             <div class="form-group row">
-                                <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
+                                <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ $resident->age }}" autofocus>        
@@ -220,7 +235,7 @@
 
                             <!--Civil Status-->
                             <div class="form-group row">
-                                <label for="civil_status" class="col-md-4 col-form-label text-md-right">{{ __('Civil Status') }}</label>
+                                <label for="civil_status" class="col-md-4 col-form-label text-md-right">{{ __('Civil Status') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="civil_status" type="text" class="form-control @error('civil_status') is-invalid @enderror" name="civil_status" value="{{ $resident->civil_status }}" autofocus>        
@@ -253,7 +268,7 @@
 
                             <!--Period of Residence-->
                             <div class="form-group row">
-                                <label for="residence_period" class="col-md-4 col-form-label text-md-right">{{ __('Period of Residence') }}</label>
+                                <label for="residence_period" class="col-md-4 col-form-label text-md-right">{{ __('Period of Residence') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="residence_period" type="text" class="form-control @error('residence_period') is-invalid @enderror" name="residence_period" value="{{ $resident->residence_period }}" autofocus>        
@@ -268,7 +283,7 @@
 
                             <!--Contact Number-->
                             <div class="form-group row">
-                                <label for="contact_num" class="col-md-4 col-form-label text-md-right">{{ __('Contact No.') }}</label>
+                                <label for="contact_num" class="col-md-4 col-form-label text-md-right">{{ __('Contact No.') }}<span>*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="contact_num" type="text" class="form-control @error('contact_num') is-invalid @enderror" name="contact_num" value="{{ $resident->contact_num }}" autofocus>        
@@ -315,11 +330,12 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
         
 @endsection

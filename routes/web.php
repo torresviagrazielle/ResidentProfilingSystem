@@ -60,10 +60,12 @@ Route::resource('/dashboard',  App\Http\Controllers\DashboardController::class);
 Route::resource('/documents', DocumentController::class);
 
 Route::get('/search', [App\Http\Controllers\ResidentController::class, 'search'])->name('search');
-//Route::get('/search', [App\Http\Controllers\TransactionController::class, 'search'])->name('search');
+Route::get('/searchtransac', [App\Http\Controllers\TransactionController::class, 'searchtransac'])->name('searchtransac');
 
 //Route::get('/print', 'ResidentController@exportCsv');
 Route::get('/print', [App\Http\Controllers\ResidentController::class, 'exportCsv'])->name('exportCsv');
 //Route::get('/print', [App\Http\Controllers\TransactionController::class, 'exportCsv'])->name('exportCsv');
+
+Route::get('/printpdf', [App\Http\Controllers\ResidentController::class, 'print'])->name('print');
 
 

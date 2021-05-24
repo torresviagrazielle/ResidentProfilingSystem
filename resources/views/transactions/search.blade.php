@@ -29,10 +29,10 @@
                     <a class="btn button btn-primary" href="/transactions/create">+ New Request</a>
                 </div>
                 <div class="col">
-                    <form class="form-inline" action="{{ route('search')}}" method="GET" style="float:right;">
+                    <form class="form-inline" action="{{ route('searchtransac')}}" method="GET" style="float:right;">
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="searchTransaction" class="sr-only">Search</label>
-                            <input type="test" class="form-control" id="searchTransaction" placeholder="Search" name="search">
+                            <input type="test" class="form-control" id="searchTransaction" placeholder="Search" name="searchtransac">
                         </div>
                         <button type="submit" class="btn btn-secondary mb-2">Search</button>
                     </form>            

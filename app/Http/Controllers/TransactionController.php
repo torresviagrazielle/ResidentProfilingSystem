@@ -173,17 +173,17 @@ class TransactionController extends Controller
         return redirect('/transactions');
     }
 
-    public function search(Request $request, Transaction $transaction){
+    public function searchtransac(Request $request, Transaction $transaction){
 
         // Get the search value from the request
-        $search = $request->input('search');
+        $searchtransac = $request->input('searchtransac');
     
         // Search in the title and body columns from the posts table
         $transactions = Transaction::query()
-            ->where('resident_id', 'LIKE', "%{$search}%")
-            ->orWhere('document_id', 'LIKE', "%{$search}%")
-            ->orWhere('purpose', 'LIKE', "%{$search}%")
-            ->orWhere('place_issued', 'LIKE', "%{$search}%")
+            ->where('resident_id', 'LIKE', "%{$searchtransac}%")
+            ->orWhere('document_id', 'LIKE', "%{$searchtransac}%")
+            ->orWhere('purpose', 'LIKE', "%{$searchtransac}%")
+            ->orWhere('place_issued', 'LIKE', "%{$searchtransac}%")
             ->get();
     
         // Return the search view with the resluts compacted

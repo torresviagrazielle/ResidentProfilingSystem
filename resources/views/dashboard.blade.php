@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card {
+        background-color: #1976d2;
+        text-align: right;
+        font-size: 20px; 
+        font-weight: 200;
+        color: white;
+    }
+</style>
 <div class="container">
     <!--SIDENAV CONTENT-->
     <div class="row justify-content-center">
