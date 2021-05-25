@@ -42,7 +42,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
+                               
 
                                 <div class="form-group row">
                                     <!--PASSWORD INPUT-->
@@ -87,6 +87,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </form>
                     </div>
