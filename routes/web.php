@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 
 /*
@@ -39,10 +41,10 @@ Auth::routes(); */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 
-Auth::routes();
+Auth::routes(['verify' => true ]);
 
 Route::get('/home', function () {
-    return redirect('/residents');
+    return redirect('/dashboard');
 });
 
 Route::get('/delete-blank-transaction', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
@@ -67,5 +69,11 @@ Route::get('/print', [App\Http\Controllers\ResidentController::class, 'exportCsv
 //Route::get('/print', [App\Http\Controllers\TransactionController::class, 'exportCsv'])->name('exportCsv');
 
 Route::get('/printpdf', [App\Http\Controllers\ResidentController::class, 'print'])->name('print');
+
+//Route for mailing
+Route::get('/email', function(){
+    Mail::to('201811628@gordoncollege.edu.ph')->send(new WelcomeMail());
+    return new WelcomeMail();
+});
 
 

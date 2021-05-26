@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Transaction;
-use App\Models\Resident;
+use App\Models\Resident; 
 use App\Models\Document;
 
 
@@ -18,7 +18,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index');    }
+        $this->middleware(['auth', 'verified'])->except('index'); 
+    }
 
     /**
      * Show the application dashboard.
