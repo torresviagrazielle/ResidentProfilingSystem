@@ -61,6 +61,7 @@ Route::resource('/residents',  App\Http\Controllers\ResidentController::class);
 Route::resource('/dashboard',  App\Http\Controllers\DashboardController::class);
 Route::resource('/documents', DocumentController::class);
 
+
 Route::get('/search', [App\Http\Controllers\ResidentController::class, 'search'])->name('search');
 Route::get('/searchtransac', [App\Http\Controllers\TransactionController::class, 'searchtransac'])->name('searchtransac');
 
@@ -68,12 +69,13 @@ Route::get('/searchtransac', [App\Http\Controllers\TransactionController::class,
 Route::get('/print', [App\Http\Controllers\ResidentController::class, 'exportCsv'])->name('exportCsv');
 //Route::get('/print', [App\Http\Controllers\TransactionController::class, 'exportCsv'])->name('exportCsv');
 
-Route::get('/printpdf', [App\Http\Controllers\ResidentController::class, 'print'])->name('print');
 
 //Route for mailing
 Route::get('/email', function(){
-    Mail::to('201811628@gordoncollege.edu.ph')->send(new WelcomeMail());
+    Mail::to('201810909@gordoncollege.edu.ph')->send(new WelcomeMail());
     return new WelcomeMail();
 });
 
+//Route::get('/transaction/print', [App\Http\Controllers\TransactionController::class, 'printPDF'])->name('printPDF');
+Route::get('/transaction/print', [App\Http\Controllers\TransactionController::class, 'printTransaction'])->name('printTransaction');
 

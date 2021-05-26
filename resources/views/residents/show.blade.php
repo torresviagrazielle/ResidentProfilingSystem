@@ -40,7 +40,7 @@
                 <div class="card-header">Personal Information</div>   
 
                 <div class="card-body">
-                    Name : {{ $resident->lastname }}, {{ $resident->firstname }}, {{ $resident->middlename }} {{ $resident->extname }}<br>
+                    Name : {{ $resident->lastname }}, {{ $resident->firstname }} {{ $resident->middlename }} {{ $resident->extname }}<br>
                     Address : {{ $resident->house_num }} {{ $resident->street }}, {{ $resident->barangay }}, {{ $resident->city }}<br>
                     Citizenship : {{ $resident->citizenship }} <br>
                     Religion : {{ $resident->religion }} <br>

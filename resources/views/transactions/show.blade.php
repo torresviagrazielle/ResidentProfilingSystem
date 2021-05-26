@@ -22,10 +22,13 @@
                     Purpose : {{ $transaction->purpose }} <br>
                     Place Issued : {{ $transaction->place_issued }} <br>
                     Created At : {{ $transaction->created_at }}
+                    <a class="btn btn-success" href="/transaction/print" style="float:right; margin-right: 20px;">Print Document</a>
+
                 </div>
             </div>
         </div>
     </div>
+
 </div>
     
 @endsection

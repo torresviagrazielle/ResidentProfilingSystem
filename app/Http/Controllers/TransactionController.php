@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
+use PDF;
+
 
 
 class TransactionController extends Controller
@@ -26,13 +28,14 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        //$transactions = \App\Models\Transaction::get();
-        $documents = Document::where('id','=','transaction.document_id')->pluck('document_type');
-        //$documents = Document::get();
+        $documents = Document::get();
+        //$documents = Document::with('transactions')->get();
         $user = Auth::user();
         $transactions = $user->transaction()->orderBy('created_at','desc')->take(5)->get();
         $count = $user->transaction()->where('id','!=','')->count();
         return view('transactions.index', compact('transactions', 'count', 'documents'));
+    
+    
     }
 
     /**
@@ -85,8 +88,7 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         //
-        //$transaction = \App\Models\Transaction::find($id);
-        $transaction = Transaction::find($transaction->id);
+        $transaction = Transaction::findOrFail($transaction->id);
         //$documents = $transaction->documents;
         return view('transactions.show', compact('transaction'));
 
@@ -172,7 +174,8 @@ class TransactionController extends Controller
         
         return redirect('/transactions');
     }
-
+    
+    //SEARCH FUNCTION
     public function searchtransac(Request $request, Transaction $transaction){
 
         // Get the search value from the request
@@ -188,5 +191,38 @@ class TransactionController extends Controller
     
         // Return the search view with the resluts compacted
         return view('transactions.search', compact('transactions'));
+    }
+
+    //PRINT FUNCTION
+    public function printPDF()
+    {
+        $trasanction = Transaction::all();
+        $document = Document::all();
+        $resident = Resident::all();
+        
+        // This  $data array will be passed to our PDF blade
+        $data = [
+        'title' => 'Document Issuance',
+        'heading' => 'Barangay Sample',
+        'content' => 'SAMPLE CONTENT'];
+          
+        $pdf = PDF::loadView('pdf_view', $data);  
+        return $pdf->download('document.pdf');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printTransaction(Transaction $transaction) {
+        $transactions = Transaction::all();
+        $residents = Resident::all();
+        //$documents = $transaction->documents;
+        return view('transactions.indigent',compact('transactions', 'residents'));
+
+        
+
     }
 }
