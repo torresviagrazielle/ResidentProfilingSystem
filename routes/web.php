@@ -45,7 +45,7 @@ Auth::routes(['verify' => true ]);
 
 Route::get('/home', function () {
     return redirect('/dashboard');
-});
+})->middleware('verified');;
 
 Route::get('/delete-blank-transaction', [App\Http\Controllers\TransactionController::class, 'deleteBlank']);
 Route::get('/transactions-archive', [App\Http\Controllers\TransactionController::class, 'archive']);

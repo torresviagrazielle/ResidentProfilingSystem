@@ -57,6 +57,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!--LOGIN BUTTON-->
                                 <div class="form-group row">
                                     <div class="col-md-8 offset-md-2">
@@ -68,25 +80,17 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-8 offset-md-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label>
-
-                                            @if (Route::has('password.request'))
-                                            <a style="float:right"; class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                            @endif
-
-                                            @guest
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                            @endguest
-                                        </div>
+                                        @if (Route::has('password.request'))
+                                        <a style="text-align: right" class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}</a>
                                     </div>
+                                    <div class="col-md-8 offset-md-2">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                     </div>
                                 </div>
+                                
+                              
+                                @endif
                             </div>
                             </div>
                         </form>
