@@ -3,67 +3,47 @@
 @section('content')
 <style>
     .card {
-        background-color: #1976d2;
-        text-align: right;
         font-size: 20px; 
         font-weight: 200;
-        color: white;
+        text-align: center;
     }
 </style>
 <div class="container">
-    <!--SIDENAV CONTENT-->
-    <div class="row justify-content-center">
-        <a class="btn button btn-light  active" href="/dashboard">Dashboard</a>
-        <a class="btn button btn-light" href="/residents">Resident Profiling</a>
-        <a class="btn button btn-light" href="/transactions">Document Issuance</a>
-        <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Archive
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item btn button btn-light" href="/residents-archive">Resident Archive</a>
-                <a class="dropdown-item btn button btn-light" href="/transactions-archive">Document Issuance Archive</a>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <!--HEADER
-    <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Dashboard</h3>    
-    <hr>-->
+
     
     <div class="row">
         <div class="col-md-3">
-            <div class="card">
+            <div class="card bg-secondary text-light">
                 <div class="card-header">{{ __('Total Population') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-light text-dark">
                  {{ $count }}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card bg-secondary text-light">
                 <div class="card-header">{{ __('Registered Voter') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-light text-dark">
                  {{ $voter }}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card bg-secondary text-light">
                 <div class="card-header">{{ __('Total Female') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-light text-dark">
                  {{ $female }}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card bg-secondary text-light">
                 <div class="card-header">{{ __('Total Male') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-light text-dark">
                  {{ $male }}
                 </div>
             </div>
