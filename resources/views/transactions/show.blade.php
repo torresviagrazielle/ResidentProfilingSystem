@@ -17,7 +17,7 @@
         <div class="col-md-8">            
             <div class="card">       
                 <div class="card-body">
-                    Resident Name : {{ $transaction->resident_id }} <br>
+                    Resident Name : {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }} <br>
                     Type of Document : {{ $transaction->document_id }} <br>
                     Purpose : {{ $transaction->purpose }} <br>
                     Place Issued : {{ $transaction->place_issued }} <br>

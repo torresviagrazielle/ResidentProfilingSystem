@@ -45,7 +45,7 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td> {{ $transaction->id }} </td>
-                                <td> {{ $transaction->resident_id }}</td>
+                                <td> {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</td>
                                 <td> {{ $transaction->document_id }}</td>
                                 <td> {{ $transaction->purpose }}</td>
                                 <td> <a href="/transactions/{{$transaction->id}}" class="btn button btn-primary"> View </a> 
@@ -54,7 +54,7 @@
                                     <form method="POST" action=" {{ route('transactions.destroy', $transaction->id)}}">
                                         @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn button btn-danger" style="margin-left: -105px;">Archive</button>
+                                            <button type="submit" class="btn button btn-danger" style="margin-left:-75px;">Archive</button>
                                     </form>
                                 </td>
                             </tr>

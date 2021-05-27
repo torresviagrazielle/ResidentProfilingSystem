@@ -57,7 +57,7 @@
                                     <form method="POST" action=" {{ route('residents.destroy', $resident->id)}}">
                                         @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn button btn-danger" style="margin-left: -80px;">Archive</button>
+                                            <button type="submit" class="btn button btn-danger" style="margin-left: -55px;">Archive</button>
                                     </form>
                                 </td>
                             </tr>
