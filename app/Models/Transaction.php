@@ -18,12 +18,12 @@ class Transaction extends Model
     // relationship between resident and transaction
     public function resident()
     {
-        return $this->belongsTo(Resident::class, 'resident_id');
+        return $this->belongsTo(Resident::class);
     }
 
     // relationship between document and transaction
     public function document()
     {
-        return $this->hasMany(Document::class, 'document_id');
+        return $this->hasMany(Document::class);
     }
 }

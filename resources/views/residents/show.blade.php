@@ -60,6 +60,8 @@
             </div>
         </div>
     </div>
-</div>
+    @include('/residents/transactions')
+</div> 
+
     
 @endsection

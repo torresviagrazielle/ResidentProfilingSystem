@@ -17,7 +17,7 @@ class Resident extends Model
 
 
     // relationship between resident and transaction
-    public function transaction()
+    public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
