@@ -9,10 +9,12 @@ class Document extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['document_type'];
+
     
     // relationship between document and transaction
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 }

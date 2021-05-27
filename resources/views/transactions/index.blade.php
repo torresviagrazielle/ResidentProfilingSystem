@@ -46,7 +46,7 @@
                             <tr>
                                 <td> {{ $transaction->id }} </td>
                                 <td> {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</td>
-                                <td> {{ $transaction->document_id }}</td>
+                                <td> {{ $transaction->document->document_type}}</td>
                                 <td> {{ $transaction->purpose }}</td>
                                 <td> <a href="/transactions/{{$transaction->id}}" class="btn button btn-primary"> View </a> 
                                      <a href="/transactions/{{$transaction->id}}/edit" class="btn button btn-info"> Edit </a> </td>

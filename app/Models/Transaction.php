@@ -24,6 +24,6 @@ class Transaction extends Model
     // relationship between document and transaction
     public function document()
     {
-        return $this->hasMany(Document::class);
+        return $this->belongsTo(Document::class);
     }
 }

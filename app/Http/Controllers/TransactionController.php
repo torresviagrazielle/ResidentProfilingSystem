@@ -68,7 +68,7 @@ class TransactionController extends Controller
 
         $transaction = new Transaction();
         $transaction->resident_id = $request->resident_id;
-        $transaction->document_id = $request->document_id;
+        $transaction->transactions->id;
         $transaction->purpose = $request->purpose;
         $transaction->place_issued = $request->place_issued;
         $transaction->user_id = auth()->user()->id;
