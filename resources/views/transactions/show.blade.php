@@ -18,7 +18,7 @@
             <div class="card">       
                 <div class="card-body">
                     Resident Name : {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }} <br>
-                    Type of Document : {{ $transaction->document_id }} <br>
+                    Type of Document : {{ $transaction->document->document_type}} <br>
                     Purpose : {{ $transaction->purpose }} <br>
                     Place Issued : {{ $transaction->place_issued }} <br>
                     Created At : {{ $transaction->created_at }}

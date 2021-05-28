@@ -39,7 +39,7 @@
                             <tr>
                                 <td> {{ $transaction->id }} </td>
                                 <td> {{ $transaction->resident_id }}</td>
-                                <td> {{ $transaction->document_id }}</td>
+                                <td> {{ $transaction->document->document_type}}</td>
                                 <td> {{ $transaction->purpose }}</td>
                                 <td> 
                                 <a href="/transactions/{{$transaction->id}}/restore" class="btn btn-success"> Restore </a>

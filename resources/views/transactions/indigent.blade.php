@@ -39,10 +39,10 @@
 
     <!--IMAGE AND TABLE IN LINE-->
     <div class="row justify-content-center" style="padding:20px;">
-    @foreach ($residents as $transact)
+    @foreach ($transactions as $transaction)
         <div class="col-md-3 justify-content-center">
-            @if ($transact->img)
-                <img src="{{ URL::asset('/storage/img/'.$transact->img) }}" alt="{{ $transact->img }}" style="width:190px; height:190px; position:flex; "/>
+            @if ($transaction->resident->img)
+                <img src="{{ URL::asset('/storage/img/'.$transaction->resident->img) }}" alt="{{ $transaction->resident->img }}" style="width:190px; height:190px; position:flex; "/>
             @else
                 No image available
             @endif
@@ -61,25 +61,25 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{$transact->lastname}}, {{$transact->firstname}} {{$transact->middlename}} {{$transact->extname}}</td>
-                            <td>{{$transact->house_num}} {{$transact->street}}, {{$transact->barangay}}, {{$transact->city}}</td>
-                            <td>{{$transact->age}}</td>
+                            <td>{{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</td>
+                            <td>{{$transaction->resident->house_num}} {{$transaction->resident->street}}, {{$transaction->resident->barangay}}, {{$transaction->resident->city}}</td>
+                            <td>{{$transaction->resident->age}}</td>
                         </tr>
                     </tbody>
                 </table>
                 
             </div>
         </div>
-        @endforeach
+        
     </div>
 
     <h3 style="padding: 20px; text-indent: 5%; text-align:justify;">This certification is being issued
-    upon the request of <b><u>@foreach($residents as $transact) {{$transact->lastname}}, {{$transact->firstname}} {{$transact->middlename}} {{$transact->extname}} @endforeach</u></b> who is the <b><u>N/A</u></b> of the above mentioned for:
-    <b><u>@foreach($transactions as $purpose){{$purpose->purpose}}@endforeach</u></b>
+    upon the request of <b><u>{{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</u></b> who is the <b><u>N/A</u></b> of the above mentioned for:
+    <b><u>{{$transaction->purpose}}</u></b>
     </h3>
 
     <div class="row justify-content-center">
-        <p>Issued this <b><u>@foreach($transactions as $date){{$date->created_at}}@endforeach</u></b></p>
+        <p>Issued this <b><u>{{$transaction->created_at}}</u></b></p>
     </div>
     <div class="row justify-content-center" class="margin-top: -100px;">
         <p><b>*Not Valid without the Official Seal of the Barangay.</b></p>
@@ -88,7 +88,7 @@
         <p><b>*This certificate/clearance is valid only for (60) Sixty days
         from the adte issued.</b></p>
     </div>
-    
+    @endforeach
 
     <div style="float: right; padding-right:20px;">
         <div class="row justify-content-center">
