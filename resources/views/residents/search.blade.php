@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="container">
-
+    <!--HEADER-->
+    <div class="form-inline">
+            <div class="form-group mb-2">
+                <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Resident Profiling</h3>    
+            </div>
+    </div> <hr style="margin-top:-5px;"> 
     <div class="row justify-content-center">
         <div class="col-md-12">
             <!--ADD BUTTON AND SEARCH BAR IN LINE-->

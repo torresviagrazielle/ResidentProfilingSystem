@@ -36,14 +36,8 @@
                                 <label for="resident_id" class="col-md-4 col-form-label text-md-right">{{ __('Resident Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="resident_id" type="text" class="form-control @error('resident_id') is-invalid @enderror" name="resident_id" value="{{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}" autofocus>        
+                                    <input id="resident_id" type="text" class="form-control @error('resident_id') is-invalid @enderror" name="resident_id" value="{{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}" autofocus disabled>        
                                 </div>
-
-                                @error('resident_id')
-                                    <span class="invalid-feedback" role="alert"> 
-                                        {{ $message }}
-                                    </span>                                
-                                @enderror
                             </div>
 
                             <!--Type of Document-->

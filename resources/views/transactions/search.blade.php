@@ -2,25 +2,13 @@
 
 @section('content')
 <div class="container">
-    <!--SIDENAV CONTENT-->
-    <div class="row justify-content-center">
-        <a class="btn button btn-light" href="/dashboard">Dashboard</a>
-        <a class="btn button btn-light" href="/residents">Resident Profiling</a>
-        <a class="btn button btn-light active" href="/transactions">Document Issuance</a>
-        <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Archive
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item btn button btn-light" href="/residents-archive">Resident Archive</a>
-                <a class="dropdown-item btn button btn-light" href="/transactions-archive">Document Issuance Archive</a>
+    <!--HEADER-->
+    <div class="form-inline">
+            <div class="form-group mb-2">
+                <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Document Issuance</h3>    
             </div>
-        </div>
-    </div>
-    <hr>
-    <!--HEADER
-    <h3 style="padding-left: 30px; font-weight:bold; color:#272a2d;">Document Issuance</h3>    
-    <hr>-->
+    </div> <hr style="margin-top:-5px;"> 
+
     <div class="row justify-content-center">
         <div class="col-md-12">
         <!--ADD BUTTON AND SEARCH BAR IN LINE-->
@@ -59,8 +47,8 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td> {{ $transaction->id }} </td>
-                                <td> {{ $transaction->resident_id }}</td>
-                                <td> {{ $transaction->document_id }}</td>
+                                <td> {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</td>
+                                <td> {{ $transaction->document->document_type}}</td>
                                 <td> {{ $transaction->purpose }}</td>
                                 <td> <a href="/transactions/{{$transaction->id}}" class="btn button btn-primary"> View </a> 
                                      <a href="/transactions/{{$transaction->id}}/edit" class="btn button btn-info"> Edit </a> </td>
