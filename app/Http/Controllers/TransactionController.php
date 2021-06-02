@@ -187,6 +187,7 @@ class TransactionController extends Controller
             ->orWhere('document_id', 'LIKE', "%{$searchtransac}%")
             ->orWhere('purpose', 'LIKE', "%{$searchtransac}%")
             ->orWhere('place_issued', 'LIKE', "%{$searchtransac}%")
+            ->orWhere('created_at', 'LIKE', "%{$searchtransac}%")
             ->get();
     
         // Return the search view with the resluts compacted

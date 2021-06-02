@@ -38,7 +38,7 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td> {{ $transaction->id }} </td>
-                                <td> {{ $transaction->resident_id}}</td>
+                                <td> {{ $transaction->resident->lastname }}, {{ $transaction->resident->firstname }} {{ $transaction->resident->middlename }} {{ $transaction->resident->extname }}</td>
                                 <td> {{ $transaction->document->document_type}}</td>
                                 <td> {{ $transaction->purpose }}</td>
                                 <td> 
